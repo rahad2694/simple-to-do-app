@@ -1,12 +1,34 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import toast from 'react-hot-toast';
+import auth from '../../firebase.init';
 
 const AddToDo = () => {
+    const [user] = useAuthState(auth);
     const handleSubmit = (e) => {
         e.preventDefault();
         const taskName = e.target.name.value;
         const taskDescription = e.target.description.value;
-        const data = {taskName,taskDescription};
+        const data = {taskName,taskDescription,email:user?.email};
         console.log(data);
+        const url = `http://localhost:5000/addtodo`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization': `${user.email} ${localStorage.getItem("accessToken")}`
+            },
+            body: JSON.stringify(data),
+        })
+            .then(res => res.json())
+            .then(response => {
+                // console.log(response);
+                toast.success("To-do added successfully");
+                e.target.reset();
+            })
+            .catch(err => {
+                toast.error(err.message, { id: 'adding-error' });
+            });
     }
     return (
         <div>
