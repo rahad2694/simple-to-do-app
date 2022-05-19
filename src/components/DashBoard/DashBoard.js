@@ -28,12 +28,12 @@ const DashBoard = () => {
 
     return (
         <div>
-            <h1 className='text-purple-500 text-2xl font-bold my-2'>Welcome to your To-Do List Manager</h1>
+            <h1 className='text-purple-500 text-2xl font-bold my-2'>Your Dashboard</h1>
             <label htmlFor="add-to-do-modal" className="btn modal-button my-5">Add new To-do</label>
             <AddTodoModal></AddTodoModal>
             <div className='my-3 mx-4'>
                 <div>
-                    <h1 className='text-green-500 font-bold my-3'>Current Active To-do List</h1>
+                    {allIetms.length ===0?<h1 className='text-red-500 font-bold my-3'>No To-do added by you yet</h1>: <h1 className='text-green-500 font-bold my-3'>Your Current To-do List</h1>}
                     <div className="overflow-x-auto">
                         <table className="table mx-auto w-1/4 md:w-2/4 lg:w-11/12 text-center">
                             <thead>
