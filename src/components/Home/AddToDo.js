@@ -11,7 +11,7 @@ const AddToDo = () => {
         const taskDescription = e.target.description.value;
         const data = {taskName,taskDescription,email:user?.email};
         console.log(data);
-        const url = `http://localhost:5000/addtodo`;
+        const url = `https://simple-to-do-app-server.herokuapp.com/addtodo`;
         fetch(url, {
             method: 'POST',
             headers: {
@@ -22,7 +22,6 @@ const AddToDo = () => {
         })
             .then(res => res.json())
             .then(response => {
-                // console.log(response);
                 toast.success("To-do added successfully");
                 e.target.reset();
             })

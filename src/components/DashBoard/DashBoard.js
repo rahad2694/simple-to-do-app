@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
 import auth from '../../firebase.init';
-import Spinners from '../Spinners/Spinners';
 import ActiveToDoTable from '../Home/ActiveToDoTable';
 import AddTodoModal from '../Home/AddTodoModal';
 
@@ -13,23 +12,19 @@ const DashBoard = () => {
 
     useEffect(() => {
         async function getItems() {
-            const headers ={
-                'email':`${user?.email}`
+            const headers = {
+                'email': `${user?.email}`
             }
             try {
-                const response = await axios.get(`http://localhost:5000/todolist`,{ headers: headers});
+                const response = await axios.get(`https://simple-to-do-app-server.herokuapp.com/todolist`, { headers: headers });
                 setAllItems(response.data);
             }
             catch (error) {
-                // console.log(error);
                 toast.error(error.message, { id: 'error-message' })
             }
         }
         getItems();
     }, [allIetms]);
-    // if (allIetms.length === 0) {
-    //     return <Spinners></Spinners>
-    // }
 
     return (
         <div>
@@ -40,8 +35,7 @@ const DashBoard = () => {
                 <div>
                     <h1 className='text-green-500 font-bold my-3'>Current Active To-do List</h1>
                     <div className="overflow-x-auto">
-                        <table className="table w-full text-center">
-                            {/* <!-- head --> */}
+                        <table className="table mx-auto w-1/4 md:w-2/4 lg:w-11/12 text-center">
                             <thead>
                                 <tr>
                                     <th></th>

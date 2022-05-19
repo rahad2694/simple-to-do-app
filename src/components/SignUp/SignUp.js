@@ -26,10 +26,10 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     useEffect(() => {
         if (emailUser || googleUser) {
-            
+
             let user = emailUser || googleUser;
             console.log(user.user.displayName);
-            const url = `http://localhost:5000/login`;
+            const url = `https://simple-to-do-app-server.herokuapp.com/login`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -47,7 +47,7 @@ const SignUp = () => {
                     navigate(from, { replace: true });
                 })
         }
-    }, [emailUser, googleUser,navigate,from]);
+    }, [emailUser, googleUser, navigate, from]);
 
     useEffect(() => {
         if (emailError || googleError) {

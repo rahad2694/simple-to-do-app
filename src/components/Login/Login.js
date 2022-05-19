@@ -26,7 +26,7 @@ const Login = () => {
         if (emailUser || googleUser) {
             console.log('I am in')
             let user = emailUser || googleUser;
-            const url = `http://localhost:5000/login`;
+            const url = `https://simple-to-do-app-server.herokuapp.com/login`;
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -38,7 +38,6 @@ const Login = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    //toast.success('Logging in Successful', { id: 'login' });
                     let message = `welcome ${user?.user.displayName}`;
                     toast.success(message, { id: 'login' });
                     localStorage.setItem('accessToken', data.accessToken);
