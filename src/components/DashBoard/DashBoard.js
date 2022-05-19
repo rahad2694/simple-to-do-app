@@ -38,7 +38,7 @@ const DashBoard = () => {
                         <table className="table mx-auto w-1/4 md:w-2/4 lg:w-11/12 text-center">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <th className='hidden md:table-cell'></th>
                                     <th>Task Name</th>
                                     <th>Task Description</th>
                                     <th>Action</th>
