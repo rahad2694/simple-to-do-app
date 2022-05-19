@@ -47,7 +47,7 @@ const Login = () => {
     }, [emailUser, googleUser, navigate, from]);
 
     if (emailLoading || googleLoading) {
-        return <Spinners></Spinners>
+        return <div className='mt-40'><Spinners></Spinners></div>
     }
     if (emailError || googleError) {
         let errorNote = emailError || googleError;
