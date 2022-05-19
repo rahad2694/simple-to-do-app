@@ -43,7 +43,7 @@ const ActiveToDoTable = ({ item, index }) => {
             <th className='hidden md:table-cell'>{index + 1}</th>
             <td>{completed ? <s>{taskName}</s> : <p>{taskName}</p>}</td>
             <td>{completed ? <s>{taskDescription}</s> : <p>{taskDescription}</p>}</td>
-            <td><button disabled={completed} onClick={() => handleStrikeThrough(_id)} className='btn text-white hidden md:block'>Mark Complete</button><button title='Mark Complete?' onClick={() => handleStrikeThrough(_id)} className='btn text-white md:hidden'><FontAwesomeIcon icon={faCheck} /></button></td>
+            <td><button disabled={completed} onClick={() => handleStrikeThrough(_id)} className='btn text-white hidden md:block'>Mark Complete</button><button disabled={completed} title='Mark Complete?' onClick={() => handleStrikeThrough(_id)} className='btn text-white md:hidden'><FontAwesomeIcon icon={faCheck} /></button></td>
             <td><button onClick={() => handleDelete(_id)} className='btn bg-blue-500 text-white hidden md:block'>Delete</button><button onClick={() => handleDelete(_id)} className='btn bg-blue-500 text-white md:hidden' title='Delete?'>X</button></td>
         </tr>
     );
